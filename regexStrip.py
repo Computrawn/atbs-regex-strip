@@ -4,9 +4,10 @@
 import re
 
 def spaceStripper(text):
-    regexStrip = re.compile(r'(^\s+)(\w{1,})')
-    spaced_out = regexStrip.findall(text)
-    print(spaced_out)
+    frontSpace = re.compile(r'(^\s+)(\w.*\.?)(\s{2,})')
+    spaces = frontSpace.findall(text)
+    print(spaces)
+    print(text)
 
 user_input = input('Please enter spaced out text here: ')
 spaceStripper(user_input)
