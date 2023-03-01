@@ -5,22 +5,19 @@ import re
 
 
 def strip_func(usertext, userpattern):
-    try:
+    if userpattern == ' ':
         space_regex = re.compile(r'(^\s+)(\w.*\.+)(\s+$)')
         spaces = space_regex.findall(usertext)
-        front_spaces = spaces[0][0]
-        trimmed_string = spaces[0][1]
-        back_spaces = spaces[0][2]
-        total = len(front_spaces + trimmed_string + back_spaces)
-        print(f"The user input a total of {total} characters.")
-        print(f'A total of {len(front_spaces) + len(back_spaces)} spaces were removed.')
-        print(f'The resulting string ({trimmed_string}) is {len(trimmed_string)} characters in length.')
-    except:
-        pattern_detect = re.compile(userpattern)
-        print(pattern_detect.sub('', usertext))
+        spaces_removed = spaces[0][1]
+        print(spaces_removed)
+    else:
+        pattern_regex = re.compile(userpattern)
+        pattern_removed = pattern_regex.sub('', usertext)
+        print(pattern_removed)
 
 
 user_text = input('Please enter text here: ')
-user_pattern = input('For pattern strip function, enter pattern. For space strip function, enter None: ')
+user_pattern = input('For pattern strip function, enter pattern. For space strip function, press space bar followed '
+                     'by return key: ')
 
 strip_func(user_text, user_pattern)
