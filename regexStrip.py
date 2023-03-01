@@ -17,7 +17,7 @@ def strip_func(text, pattern):
 
 
 user_text = input('Please enter text here: ')
-user_pattern = input('For pattern strip function, enter pattern. For space strip function, press space bar followed '
-                     'by return key: ')
+user_pattern = input('To remove a pattern, type exactly what you want to remove. To remove spaces, press space bar '
+                     'followed by return key: ')
 
 strip_func(user_text, user_pattern)
