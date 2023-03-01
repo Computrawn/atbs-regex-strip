@@ -4,15 +4,15 @@
 import re
 
 
-def strip_func(usertext, userpattern):
-    if userpattern == ' ':
+def strip_func(text, pattern):
+    if pattern == ' ':
         space_regex = re.compile(r'(^\s+)(\w.*\.+)(\s+$)')
-        spaces = space_regex.findall(usertext)
+        spaces = space_regex.findall(text)
         spaces_removed = spaces[0][1]
         print(spaces_removed)
     else:
-        pattern_regex = re.compile(userpattern)
-        pattern_removed = pattern_regex.sub('', usertext)
+        pattern_regex = re.compile(pattern)
+        pattern_removed = pattern_regex.sub('', text)
         print(pattern_removed)
 
 

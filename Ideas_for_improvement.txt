@@ -1,0 +1,2 @@
+* Figure out how to make strip spaces the default method (no argument necessary).
+* Figure out how to match all pattern permutations for argument entry.
