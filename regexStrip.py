@@ -1,12 +1,13 @@
-#python3
-#regexStrip.py — An exercise in replicating the functionality of strip method using regex.
+# python3
+# regexStrip.py — An exercise in replicating the functionality of strip method using regex.
 
 import re
 
-def strip_Func(userText, userPattern):
+
+def strip_func(usertext, userpattern):
     try:
-        spaceRegex = re.compile(r'(^\s+)(\w.*\.+)(\s+$)')
-        spaces = spaceRegex.findall(userText)
+        space_regex = re.compile(r'(^\s+)(\w.*\.+)(\s+$)')
+        spaces = space_regex.findall(usertext)
         front_spaces = spaces[0][0]
         trimmed_string = spaces[0][1]
         back_spaces = spaces[0][2]
@@ -15,10 +16,11 @@ def strip_Func(userText, userPattern):
         print(f'A total of {len(front_spaces) + len(back_spaces)} spaces were removed.')
         print(f'The resulting string ({trimmed_string}) is {len(trimmed_string)} characters in length.')
     except:
-        patternDetect = re.compile(userPattern)
-        print(patternDetect.sub('', userText))
+        pattern_detect = re.compile(userpattern)
+        print(pattern_detect.sub('', usertext))
 
-user_text = input('Please enter spaced out text here: ')
+
+user_text = input('Please enter text here: ')
 user_pattern = input('For pattern strip function, enter pattern. For space strip function, enter None: ')
 
-strip_Func(user_text, user_pattern)
+strip_func(user_text, user_pattern)
