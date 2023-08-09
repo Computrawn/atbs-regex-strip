@@ -7,6 +7,6 @@ If no other arguments are passed other than the string to strip, then whitespace
 
 Otherwise, the characters specified in the second argument to the function will be removed from the string.
 
-Excerpt From Automate the Boring Stuff with Python: Practical Programming for Total Beginners, 2nd Edition  
+**Excerpt From Automate the Boring Stuff with Python: Practical Programming for Total Beginners, 2nd Edition  
 Al Sweigart  
-This material may be protected by copyright.
+This material may be protected by copyright.**
