@@ -1,27 +1,46 @@
-# python3
-# regexStrip.py — An exercise in replicating the functionality of strip method using regex.
+#!/usr/bin/env python3
+# regexStrip.py — An exercise in understanding regular expressions.
+# For more information, see README.md
 
-"""Prepared for hub, but something is broken. Needs major refactor."""
-
+import logging
 import re
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename="logging.txt",
+    format="%(asctime)s -  %(levelname)s -  %(message)s",
+)
+logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
-def strip_func(text, pattern):
-    if pattern == " ":
-        space_regex = re.compile(r"(^\s+)(\w.*\.+)(\s+$)")
-        spaces = space_regex.findall(text)
-        spaces_removed = spaces[0][1]
-        print(spaces_removed)
+"""This could be better, but regexes are the worst and why reinvent the wheel, man?"""
+
+special_characters = ["*", "$", "+", "^", "()", "(", ")"]
+
+
+def strip_func(text: str, pattern: str) -> str:
+    if not pattern:
+        beginning_spaces = re.compile(r"^\s*")
+        ending_spaces = re.compile(r"\s*$")
+        characters_removed = beginning_spaces.sub("", text)
+        characters_removed = ending_spaces.sub("", characters_removed)
+    elif pattern in special_characters:
+        pattern_regex = re.compile(f"[\{pattern}*]")
+        characters_removed = pattern_regex.sub("", text)
     else:
         pattern_regex = re.compile(pattern)
-        pattern_removed = pattern_regex.sub("", text)
-        print(pattern_removed)
+        characters_removed = pattern_regex.sub("", text)
+    logging.debug(f"____{text}____ converted to ____{characters_removed}____")
+    return characters_removed
 
 
-user_text = input("Please enter text here: ")
-user_pattern = input(
-    "To remove a pattern, type exactly what you want to remove. To remove spaces, press space bar "
-    "followed by return key: "
-)
+def main() -> None:
+    text = input("Please enter text here: ")
+    pattern = input(
+        """Type all characters you want to remove or press enter to remove all spaces.
+To remove spaces, press return key: """
+    )
+    print(strip_func(text, pattern))
 
-strip_func(user_text, user_pattern)
+
+if __name__ == "__main__":
+    main()
